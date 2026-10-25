@@ -736,18 +736,20 @@ function App() {
             element={
               <AdminThemeProvider>
                 <AdminLayout user={user} onLogout={handleLogout}>
-                  <Routes>
-                    <Route path="" element={<AdminDashboard />} />
-                    <Route path="businesses" element={<AdminBusinesses />} />
-                    <Route path="users" element={<AdminUsers />} />
-                    <Route path="datasets" element={<AdminDatasets />} />
-                    <Route path="analysis-history" element={<AdminAnalysisHistory />} />
-                    <Route path="evaluations" element={<AdminEvaluations />} />
-                    <Route path="audit-logs" element={<AdminAuditLogs />} />
-                    <Route path="settings" element={<AdminSettings />} />
-                    <Route path="profile" element={<AdminProfile user={user} onUpdateUser={setUser} />} />
-                    <Route path="*" element={<Navigate to="/admin" replace />} />
-                  </Routes>
+                  <ErrorBoundary>
+                    <Routes>
+                      <Route path="" element={<AdminDashboard />} />
+                      <Route path="businesses" element={<AdminBusinesses />} />
+                      <Route path="users" element={<AdminUsers />} />
+                      <Route path="datasets" element={<AdminDatasets />} />
+                      <Route path="analysis-history" element={<AdminAnalysisHistory />} />
+                      <Route path="evaluations" element={<AdminEvaluations />} />
+                      <Route path="audit-logs" element={<AdminAuditLogs />} />
+                      <Route path="settings" element={<AdminSettings />} />
+                      <Route path="profile" element={<AdminProfile user={user} onUpdateUser={setUser} />} />
+                      <Route path="*" element={<Navigate to="/admin" replace />} />
+                    </Routes>
+                  </ErrorBoundary>
                 </AdminLayout>
               </AdminThemeProvider>
             }
